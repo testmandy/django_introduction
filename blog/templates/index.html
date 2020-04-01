@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据收集测试平台</title>
+    <!-- 引入 echarts.js -->
+    <script src="../../static/js/echarts.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body background="grey">
+
+
+<div class="container page-header">
+<h2>测试数据平台</h2>
+</div>
+
+<div class="container page-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="body-main">
+              <div style=" float: left;"><h6 align="left" class="grey">昨日新增VOC问题</h6></div>
+              <div style=" float: right;"><a><h6 align="right">查看详情</h6></a></div>
+              <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+              <div id="main" style="float: left;width: 280px;height:200px;"></div>
+             </div>
+        </div>
+        <div class="col-md-3">
+            <div class="body-main">
+              <div style=" float: left;"><h6 align="left" class="grey">昨日万人投诉率</h6></div>
+              <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+              <div id="main2" style="float: left;width: 280px;height:200px;"></div>
+             </div>
+        </div>
+        <div class="col-md-3">
+           <div class="body-main">
+              <div style=" float: left;"><h6 align="left" class="grey">昨日新增线下问题</h6></div>
+              <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+              <div id="main3" style="float: left;width: 280px;height:200px;"></div>
+           </div>
+        </div>
+        <div class="col-md-3">
+           <div class="body-main">
+              <div style=" float: left;"><h6 align="left" class="grey">昨日线下问题解决率</h6></div>
+              <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+              <div id="main4" style="float: left;width: 280px;height:200px;"></div>
+           </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="body-main">
+              <div style="float: left;"><h6 align="left" class="grey">VOC问题趋势图</h6></div>
+              <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+              <div id="main5" style="float: left;width: 1200px;height:200px;"></div>
+           </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="body-main">
+                <div><h6 align="left" class="grey">客户端自动化</h6></div>
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="main6" style="width:600px;height:200px;"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="body-main">
+                <div style=" float: left;"><h6 align="left" class="grey">Doom覆盖率</h6></div>
+                <div style=" float: right;"><a><h6 align="right">查看详情</h6></a></div>
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="main7" style="float: left;width:200px;height:200px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+ <script type="text/javascript">
+
+    my1();
+    my2();
+    my3();
+    my4();
+    my5();
+    my6();
+    my7();
+        function my1(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '151'
+            },
+            tooltip: {},
+            <!--legend: {-->
+                <!--data:['销量']-->
+            <!--},-->
+            xAxis: {
+                <!--data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]-->
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20, 20, 36, 10, 10, 20, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+
+        function my2(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var
+option = {
+
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'line',
+            lineStyle: {
+                color: 'rgba(0,0,0,0.2)',
+                width: 1,
+                type: 'solid'
+            }
+        }
+    },
+
+    legend: {
+        data: ['DQ', 'TY', 'SS', 'QG', 'SY', 'DD']
+    },
+
+    singleAxis: {
+        top: 50,
+        bottom: 50,
+        axisTick: {},
+        axisLabel: {},
+        type: 'time',
+        axisPointer: {
+            animation: true,
+            label: {
+                show: true
+            }
+        },
+        splitLine: {
+            show: true,
+            lineStyle: {
+                type: 'dashed',
+                opacity: 0.2
+            }
+        }
+    },
+
+    series: [
+        {
+            type: 'themeRiver',
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 20,
+                    shadowColor: 'rgba(0, 0, 0, 0.8)'
+                }
+            },
+            data: [['2015/11/08',0,'DQ'],['2015/11/09',15,'DQ'],['2015/11/10',20,'DQ'],
+            ['2015/11/11',38,'DQ'],['2015/11/12',22,'DQ'],['2015/11/13',16,'DQ'],
+            ['2015/11/14',7,'DQ'],['2015/11/15',2,'DQ'],['2015/11/16',17,'DQ'],
+            ['2015/11/17',33,'DQ'],['2015/11/18',40,'DQ'],['2015/11/19',32,'DQ'],
+            ['2015/11/20',26,'DQ'],['2015/11/21',35,'DQ'],['2015/11/22',40,'DQ'],
+            ['2015/11/23',32,'DQ'],['2015/11/24',26,'DQ'],['2015/11/25',22,'DQ'],
+            ['2015/11/26',16,'DQ'],['2015/11/27',22,'DQ']]
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+
+
+        function my3(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main3'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    color: ['#3398DB'],
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name: '直接访问',
+            type: 'bar',
+            barWidth: '60%',
+            data: [10, 52, 200, 334, 390, 330, 220]
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+
+
+        function my4(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main4'));
+
+        // 指定图表的配置项和数据
+        var
+option = {
+
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'line',
+            lineStyle: {
+                color: 'rgba(0,0,0,0.2)',
+                width: 1,
+                type: 'solid'
+            }
+        }
+    },
+
+    legend: {
+        data: ['DQ', 'TY', 'SS', 'QG', 'SY', 'DD']
+    },
+
+    singleAxis: {
+        top: 50,
+        bottom: 50,
+        axisTick: {},
+        axisLabel: {},
+        type: 'time',
+        axisPointer: {
+            animation: true,
+            label: {
+                show: true
+            }
+        },
+        splitLine: {
+            show: true,
+            lineStyle: {
+                type: 'dashed',
+                opacity: 0.2
+            }
+        }
+    },
+
+    series: [
+        {
+            type: 'themeRiver',
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 20,
+                    shadowColor: 'rgba(0, 0, 0, 0.8)'
+                }
+            },
+            data: [['2015/11/08',10,'SY'],['2015/11/09',15,'SY'],['2015/11/10',35,'SY'],
+            ['2015/11/11',38,'SY'],['2015/11/12',22,'SY'],['2015/11/13',16,'SY'],
+            ['2015/11/14',7,'SY'],['2015/11/15',2,'SY'],['2015/11/16',17,'SY'],
+            ['2015/11/17',33,'SY'],['2015/11/18',40,'SY'],['2015/11/19',32,'SY'],
+            ['2015/11/20',26,'SY'],['2015/11/21',35,'SY'],['2015/11/22',4,'SY'],
+            ['2015/11/23',32,'SY'],['2015/11/24',26,'SY'],['2015/11/25',22,'SY'],
+            ['2015/11/26',16,'SY'],['2015/11/27',22,'SY'],['2015/11/28',10,'SY'],
+            ['2015/11/08',10,'DD'],['2015/11/09',15,'DD'],['2015/11/10',35,'DD'],
+            ['2015/11/11',38,'DD'],['2015/11/12',22,'DD'],['2015/11/13',16,'DD'],
+            ['2015/11/14',7,'DD'],['2015/11/15',2,'DD'],['2015/11/16',17,'DD'],
+            ['2015/11/17',33,'DD'],['2015/11/18',4,'DD'],['2015/11/19',32,'DD'],
+            ['2015/11/20',26,'DD'],['2015/11/21',35,'DD'],['2015/11/22',40,'DD'],
+            ['2015/11/23',32,'DD'],['2015/11/24',26,'DD'],['2015/11/25',22,'DD'],
+            ['2015/11/26',16,'DD'],['2015/11/27',22,'DD'],['2015/11/28',10,'DD']]
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+
+        function my5(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main5'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title: {
+        text: '未来一周气温变化',
+        subtext: '纯属虚构'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['最高气温', '最低气温']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            dataView: {readOnly: false},
+            magicType: {type: ['line', 'bar']},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel: {
+            formatter: '{value} °C'
+        }
+    },
+    series: [
+        {
+            name: '最高气温',
+            type: 'line',
+            data: [11, 11, 15, 13, 12, 13, 10],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: '平均值'}
+                ]
+            }
+        },
+        {
+            name: '最低气温',
+            type: 'line',
+            data: [1, -2, 2, 5, 3, 2, 0],
+            markPoint: {
+                data: [
+                    {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: '平均值'},
+                    [{
+                        symbol: 'none',
+                        x: '90%',
+                        yAxis: 'max'
+                    }, {
+                        symbol: 'circle',
+                        label: {
+                            position: 'start',
+                            formatter: '最大值'
+                        },
+                        type: 'max',
+                        name: '最高点'
+                    }]
+                ]
+            }
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+
+        function my6(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main6'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title: {
+        text: '堆叠区域图'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    legend: {
+        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            type: 'line',
+            stack: '总量',
+            areaStyle: {},
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            type: 'line',
+            stack: '总量',
+            areaStyle: {},
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            type: 'line',
+            stack: '总量',
+            areaStyle: {},
+            data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            type: 'line',
+            stack: '总量',
+            areaStyle: {},
+            data: [320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+
+        function my7(){
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main7'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 10,
+        data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                {value: 335},
+                {value: 310},
+                {value: 234},
+                {value: 135},
+                {value: 1548}
+            ]
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        }
+    </script>
+</body>
+</html>
