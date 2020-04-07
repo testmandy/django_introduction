@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>柱状图</title>
+    <!-- 引入 G2 文件 -->
+      <script src="https://gw.alipayobjects.com/os/lib/antv/g2/3.4.10/dist/g2.min.js"></script>
+  </head>
+  <body>
+      <div>{{ bug_list }}</div>
+      <ul>
+        {% for bug in bug_list %}
+        <p>{{ bug }}</p>
+        <p>{{ bug.bug_id }}</p>
+        {% endfor %}
+      </ul>
+
+
+
+    <!-- 创建图表容器 -->
+    <div id="c1"></div>
+    <script>
+      <!--var List = {{ data|safe }};//HTML的js部分需要接一个safe过滤器-->
+        <!--{% for x in List %}-->
+        <!--var x;-->
+        <!--{% endfor %}-->
+
+      const data = [
+        <!--{ genre: 'Sports', sold: List[0] },-->
+        <!--{ genre: 'Strategy', sold: List[1] },-->
+        <!--{ genre: 'Action', sold: List[2] },-->
+        <!--{ genre: 'Shooter', sold: List[3] },-->
+        <!--{ genre: 'Other', sold: List[4] }-->
+        { genre: 'Sports', sold: 1 },
+        { genre: 'Strategy', sold: 2 },
+        { genre: 'Action', sold: 3 },
+        { genre: 'Shooter', sold: 4 },
+        { genre: 'Other', sold: 5 }
+      ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+      // Step 1: 创建 Chart 对象
+      const chart = new G2.Chart({
+        container: 'c1', // 指定图表容器 ID
+        width : 600, // 指定图表宽度
+        height : 300 // 指定图表高度
+      });
+      // Step 2: 载入数据源
+      chart.source(data);
+      // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+      chart.interval().position('genre*sold').color('genre')
+      // Step 4: 渲染图表
+      chart.render();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据收集测试平台</title>
+    <!-- 引入 G2 文件 -->
+    <script src="https://gw.alipayobjects.com/os/lib/antv/g2/3.4.10/dist/g2.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.5.1/dist/g2.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.1/dist/data-set.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.5.1/dist/g2.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.1/dist/data-set.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
+
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body style="background-color:#eceff3">
+
+
+<div class="container page-header" style="background-color:White;font-family:Microsoft YaHei">
+<h2>测试数据平台</h2>
+</div>
+
+<div class="container page-body">
+    <div class="row">
+        <div class="col-md-3" style="background-color:White">
+            <div class="body-main">
+              <div style=" float: left;"><h6 style="color:grey" align="left">昨日新增VOC问题</h6></div>
+              <div style=" float: right;"><a><h6 align="right">查看详情</h6></a></div>
+                <!-- 创建图表容器 -->
+              <div id="c1" style="float: left;width: 280px;height:200px;"></div>
+              <div id="w1" style="float: left;width: 280px;height:30px;"><h6 style="color:DimGray" align="left">周同比 {{}} 日同比 {{}}</h6></div>
+             </div>
+        </div>
+        <div class="col-md-3" style="background-color:White">
+            <div class="body-main">
+              <div style="float: left;"><h6 style="color:grey" align="left">昨日万人投诉率</h6></div>
+                <!-- 创建图表容器 -->
+              <div id="c2" style="float: left;width: 280px;height:200px;"></div>
+              <div id="w2" style="float: left;width: 280px;height:30px;"><h6 style="color:DimGray" align="left">周同比 {{}} 日同比 {{}}</h6></div>
+
+             </div>
+        </div>
+        <div class="col-md-3" style="background-color:White">
+           <div class="body-main">
+              <div style="float: left;"><h6 style="color:grey" align="left">昨日新增线下问题</h6></div>
+                <!-- 创建图表容器 -->
+              <div id="c3" style="float: left;width: 280px;height:200px;"></div>
+              <div id="w3" style="float: left;width: 280px;height:30px;"><h6 style="color:DimGray" align="left">周同比 {{}} 日同比 {{}}</h6></div>
+
+           </div>
+        </div>
+        <div class="col-md-3" style="background-color:White">
+           <div class="body-main">
+              <div style=" float: left;"><h6 style="color:grey" align="left">昨日线下问题解决率</h6></div>
+               <!-- 创建图表容器 -->
+              <div id="c4" style="float: left;width: 280px;height:200px;"></div>
+              <div id="w4" style="float: left;width: 280px;height:30px;"><h6 style="color:DimGray" align="left">周同比 {{}} 日同比 {{}}</h6></div>
+
+           </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="background-color:White">
+            <div class="body-main">
+              <div style="float: left;"><h6 style="font-weight:600" align="left">VOC问题趋势图</h6></div>
+                <!-- 创建图表容器 -->
+              <div id="c5" style="float: left;width: 1120px;height:200px;"></div>
+           </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" style="background-color:White">
+            <div class="body-main">
+                <div style="float: left;"><h6 style="font-weight:600" align="left">客户端自动化</h6></div>
+                <div id="c6" style="float:left;width:600px;height:300px;"></div>
+            </div>
+        </div>
+        <div class="col-md-6" style="background-color:White">
+            <div class="body-main">
+                <div style="float: left;"><h6 style="font-weight:600" align="left">Doom覆盖率</h6></div>
+                <div style="float: right;"><a><h6 align="right">查看详情</h6></a></div>
+                <!-- 创建图表容器 -->
+                <div id="c8" style="float:left;width:600px;height:300px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    my1();
+    my2();
+    my3();
+    my4();
+    my5();
+    my6();
+    my7();
+    my8();
+function my1(){
+var data = [{
+    week: 'Monday',
+    sales: 38
+  }, {
+    week: 'Tuesday',
+    sales: 52
+  }, {
+    week: 'Wednesday',
+    sales: 61
+  }, {
+    week: 'Thursday',
+    sales: 145
+  }, {
+    week: 'Friday',
+    sales: 48
+  }, {
+    week: 'Saturday',
+    sales: 38
+  }, {
+    week: 'sunday',
+    sales: 38
+  }];
+  var chart = new G2.Chart({
+    container: 'c1',
+        width : 300, // 指定图表宽度
+        height : 200 // 指定图表高度
+  });
+  chart.source(data);
+  chart.scale('sales', {
+    tickInterval: 20
+  });
+  chart.interval().position('week*sales');
+  chart.render();
+}
+
+function my2(){
+       var data = [{
+    "year": "1986",
+    "ACME": 162,
+    "Compitor": 42
+  }, {
+    "year": "1987",
+    "ACME": 134,
+    "Compitor": 54
+  }, {
+    "year": "1988",
+    "ACME": 116,
+    "Compitor": 26
+  }, {
+    "year": "1989",
+    "ACME": 122,
+    "Compitor": 32
+  }, {
+    "year": "1990",
+    "ACME": 178,
+    "Compitor": 68
+  }, {
+    "year": "1991",
+    "ACME": 144,
+    "Compitor": 54
+  }, {
+    "year": "1992",
+    "ACME": 125,
+    "Compitor": 35
+  }, {
+    "year": "1993",
+    "ACME": 176,
+    "Compitor": 66
+  }, {
+    "year": "1994",
+    "ACME": 156
+  }, {
+    "year": "1995",
+    "ACME": 195
+  }, {
+    "year": "1996",
+    "ACME": 215
+  }, {
+    "year": "1997",
+    "ACME": 176,
+    "Compitor": 36
+  }, {
+    "year": "1998",
+    "ACME": 167,
+    "Compitor": 47
+  }, {
+    "year": "1999",
+    "ACME": 142
+  }, {
+    "year": "2000",
+    "ACME": 117
+  }, {
+    "year": "2001",
+    "ACME": 113,
+    "Compitor": 23
+  }, {
+    "year": "2002",
+    "ACME": 132
+  }, {
+    "year": "2003",
+    "ACME": 146,
+    "Compitor": 46
+  }, {
+    "year": "2004",
+    "ACME": 169,
+    "Compitor": 59
+  }, {
+    "year": "2005",
+    "ACME": 184,
+    "Compitor": 44
+  }];
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: ['ACME', 'Compitor'],
+    key: 'type',
+    value: 'value'
+  });
+  var chart = new G2.Chart({
+    container: 'c2',
+        width : 300, // 指定图表宽度
+        height : 200 // 指定图表高度
+  });
+  chart.source(dv, {
+    value: {
+      alias: 'The Share Price in Dollars',
+      formatter: function formatter(val) {
+        return '$' + val;
+      }
+    },
+    year: {
+      range: [0, 1]
+    }
+  });
+  chart.tooltip({
+    crosshairs: true
+  });
+  chart.area().position('year*value').color('type').shape('smooth');
+  chart.line().position('year*value').color('type').size(2).shape('smooth');
+  chart.render();
+}
+
+
+function my3(){
+  var data = [{
+    week: 'Monday',
+    sales: 38
+  }, {
+    week: 'Tuesday',
+    sales: 52
+  }, {
+    week: 'Wednesday',
+    sales: 61
+  }, {
+    week: 'Thursday',
+    sales: 145
+  }, {
+    week: 'Friday',
+    sales: 48
+  }, {
+    week: 'Saturday',
+    sales: 38
+  }, {
+    week: 'Sunday',
+    sales: 38
+  }];
+  var chart = new G2.Chart({
+    container: 'c3',
+        width : 300, // 指定图表宽度
+        height : 200 // 指定图表高度
+  });
+  chart.source(data);
+  chart.scale('sales', {
+    tickInterval: 20
+  });
+  chart.interval().position('week*sales');
+  chart.render();
+}
+
+function my4(){
+       var data = [{
+    "year": "1986",
+    "ACME": 162,
+    "Compitor": 42
+  }, {
+    "year": "1987",
+    "ACME": 134,
+    "Compitor": 54
+  }, {
+    "year": "1988",
+    "ACME": 116,
+    "Compitor": 26
+  }, {
+    "year": "1989",
+    "ACME": 122,
+    "Compitor": 32
+  }, {
+    "year": "1990",
+    "ACME": 178,
+    "Compitor": 68
+  }, {
+    "year": "1991",
+    "ACME": 144,
+    "Compitor": 54
+  }, {
+    "year": "1992",
+    "ACME": 125,
+    "Compitor": 35
+  }, {
+    "year": "1993",
+    "ACME": 176,
+    "Compitor": 66
+  }, {
+    "year": "1994",
+    "ACME": 156
+  }, {
+    "year": "1995",
+    "ACME": 195
+  }, {
+    "year": "1996",
+    "ACME": 215
+  }, {
+    "year": "1997",
+    "ACME": 176,
+    "Compitor": 36
+  }, {
+    "year": "1998",
+    "ACME": 167,
+    "Compitor": 47
+  }, {
+    "year": "1999",
+    "ACME": 142
+  }, {
+    "year": "2000",
+    "ACME": 117
+  }, {
+    "year": "2001",
+    "ACME": 113,
+    "Compitor": 23
+  }, {
+    "year": "2002",
+    "ACME": 132
+  }, {
+    "year": "2003",
+    "ACME": 146,
+    "Compitor": 46
+  }, {
+    "year": "2004",
+    "ACME": 169,
+    "Compitor": 59
+  }, {
+    "year": "2005",
+    "ACME": 184,
+    "Compitor": 44
+  }];
+  var dv = new DataSet.View().source(data);
+  dv.transform({
+    type: 'fold',
+    fields: ['ACME', 'Compitor'],
+    key: 'type',
+    value: 'value'
+  });
+  var chart = new G2.Chart({
+    container: 'c4',
+        width : 280, // 指定图表宽度
+        height : 200 // 指定图表高度
+  });
+  chart.source(dv, {
+    value: {
+      alias: 'The Share Price in Dollars',
+      formatter: function formatter(val) {
+        return '$' + val;
+      }
+    },
+    year: {
+      range: [0, 1]
+    }
+  });
+  chart.tooltip({
+    crosshairs: true
+  });
+  chart.area().position('year*value').color('type').shape('smooth');
+  chart.line().position('year*value').color('type').size(2).shape('smooth');
+  chart.render();
+}
+
+function my5(){
+        var data = [{
+    "date": "2019/1/1",
+    "cate": "问题总数",
+    "num": 10
+},{
+    "date": "2019/1/2",
+    "cate": "问题总数",
+    "num": 22
+},{
+    "date": "2019/1/3",
+    "cate": "问题总数",
+    "num": 53
+},{
+    "date": "2019/1/4",
+    "cate": "问题总数",
+    "num": 54
+},{
+    "date": "2019/1/5",
+    "cate": "问题总数",
+    "num": 78
+},{
+    "date": "2019/1/6",
+    "cate": "问题总数",
+    "num": 50
+},{
+    "date": "2019/1/7",
+    "cate": "问题总数",
+    "num": 55
+},{
+    "date": "2019/1/8",
+    "cate": "问题总数",
+    "num": 45
+},{
+    "date": "2019/1/9",
+    "cate": "问题总数",
+    "num": 7
+},{
+    "date": "2019/1/10",
+    "cate": "问题总数",
+    "num": 85
+},{
+    "date": "2019/1/11",
+    "cate": "问题总数",
+    "num": 42
+},{
+    "date": "2019/1/12",
+    "cate": "问题总数",
+    "num": 45
+},{
+    "date": "2019/1/1",
+    "cate": "有效问题总数",
+    "num": 14
+},{
+    "date": "2019/1/2",
+    "cate": "有效问题总数",
+    "num": 12
+},{
+    "date": "2019/1/3",
+    "cate": "有效问题总数",
+    "num": 44
+},{
+    "date": "2019/1/4",
+    "cate": "有效问题总数",
+    "num": 11
+},{
+    "date": "2019/1/5",
+    "cate": "有效问题总数",
+    "num": 45
+},{
+    "date": "2019/1/6",
+    "cate": "有效问题总数",
+    "num": 47
+},{
+    "date": "2019/1/7",
+    "cate": "有效问题总数",
+    "num": 54
+},{
+    "date": "2019/1/8",
+    "cate": "有效问题总数",
+    "num": 2
+},{
+    "date": "2019/1/9",
+    "cate": "有效问题总数",
+    "num": 45
+},{
+    "date": "2019/1/10",
+    "cate": "有效问题总数",
+    "num": 11
+},{
+    "date": "2019/1/11",
+    "cate": "有效问题总数",
+    "num": 13
+},{
+    "date": "2019/1/12",
+    "cate": "有效问题总数",
+    "num": 3
+},{
+    "date": "2019/1/1",
+    "cate": "未解决问题数",
+    "num": 47
+},{
+    "date": "2019/1/2",
+    "cate": "未解决问题数",
+    "num": 55
+},{
+    "date": "2019/1/3",
+    "cate": "未解决问题数",
+    "num": 11
+},{
+    "date": "2019/1/4",
+    "cate": "未解决问题数",
+    "num": 4
+},{
+    "date": "2019/1/5",
+    "cate": "未解决问题数",
+    "num": 8
+},{
+    "date": "2019/1/6",
+    "cate": "未解决问题数",
+    "num": 10
+},{
+    "date": "2019/1/7",
+    "cate": "未解决问题数",
+    "num": 89
+},{
+    "date": "2019/1/8",
+    "cate": "未解决问题数",
+    "num": 5
+},{
+    "date": "2019/1/9",
+    "cate": "未解决问题数",
+    "num": 7
+},{
+    "date": "2019/1/10",
+    "cate": "未解决问题数",
+    "num": 45
+},{
+    "date": "2019/1/11",
+    "cate": "未解决问题数",
+    "num": 45
+},{
+    "date": "2019/1/12",
+    "cate": "未解决问题数",
+    "num": 66
+}];
+
+  var chart = new G2.Chart({
+    container: 'c5',
+    <!--forceFit: true,-->
+    width : 1000, // 指定图表宽度
+    height : 200 // 指定图表高度
+  });
+  chart.source(data, {
+    date: {
+      range: [0, 1]
+    }
+  });
+  chart.tooltip({
+    crosshairs: {
+      type: 'line'
+    }
+  });
+  chart.axis('num', {
+    label: {
+      formatter: function formatter(val) {
+        return val;
+      }
+    }
+  });
+  chart.line().position('date*num').color('cate');
+  chart.point().position('date*num').color('cate').size(4).shape('circle').style({
+    stroke: '#fff',
+    lineWidth: 1
+  });
+  chart.render();
+}
+
+function my6(){
+      const data = [
+        { genre: 'Sports', sold: 275 },
+        { genre: 'Strategy', sold: 115 },
+        { genre: 'Action', sold: 120 },
+        { genre: 'Shooter', sold: 350 },
+        { genre: 'Other', sold: 150 }
+      ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+      // Step 1: 创建 Chart 对象
+      const chart = new G2.Chart({
+        container: 'c6', // 指定图表容器 ID
+        width : 200, // 指定图表宽度
+        height : 200 // 指定图表高度
+      });
+      // Step 2: 载入数据源
+      chart.source(data);
+      // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+      chart.interval().position('genre*sold').color('genre')
+      // Step 4: 渲染图表
+      chart.render();
+}
+
+function my7(){
+ $.getJSON('https://gw.alipayobjects.com/os/antvdemo/assets/data/fireworks-sales.json', function(data) {
+    var chart = new G2.Chart({
+      container: 'c7',
+        width : 500, // 指定图表宽度
+        height : 200 // 指定图表高度
+    });
+    chart.source(data);
+    chart.scale('Data', {
+      range: [0, 1],
+      tickCount: 10,
+      type: 'timeCat'
+    });
+    chart.axis('Data', {
+      label: {
+        textStyle: {
+          fill: '#aaaaaa'
+        }
+      }
+    });
+    chart.axis('sales', {
+      label: {
+        textStyle: {
+          fill: '#aaaaaa'
+        },
+        formatter: function formatter(text) {
+          return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+        }
+      }
+    });
+    chart.tooltip({
+      crosshairs: 'y',
+      share: true
+    });
+    chart.legend({
+      attachLast: true
+    });
+    chart.guide().dataMarker({
+      top: true,
+      content: '因政策调整导致销量下滑',
+      position: ['2014-01', 1750],
+      style: {
+        text: {
+          fontSize: 13
+        }
+      },
+      lineLength: 30
+    });
+
+    chart.line().position('Data*sales');
+    chart.area().position('Data*sales');
+    chart.render();
+  });
+}
+
+function my8(){
+  var data = [{
+    type: '评估中',
+    percent: 0.23
+  }, {
+    type: '设计中',
+    percent: 0.28
+  }, {
+    type: '正在开发',
+    percent: 0.30
+  }, {
+    type: '已上线',
+    percent: 0.19
+  }];
+  var sum = 500;
+  var ds = new DataSet();
+  var dv = ds.createView().source(data);
+  dv.transform({
+    type: 'map',
+    callback: function callback(row) {
+      row.value = parseInt(sum * row.percent);
+      return row;
+    }
+  });
+  var chart = new G2.Chart({
+    container: 'c8',
+    width : 300, // 指定图表宽度
+    height : 400 // 指定图表高度
+  });
+  chart.source(dv);
+  chart.tooltip(false);
+  chart.legend({
+    position: 'right-center',
+    offsetX: -100
+  });
+  chart.coord('theta', {
+    radius: 0.75,
+    innerRadius: 0.6
+  });
+  chart.intervalStack().position('percent').color('type', ['#0a7aca', '#0a9afe', '#4cb9ff', '#8ed1ff']).opacity(1).label('percent', {
+    offset: -18,
+    textStyle: {
+      fill: 'white',
+      fontSize: 12,
+      shadowBlur: 2,
+      shadowColor: 'rgba(0, 0, 0, .45)'
+    },
+    rotate: 0,
+    autoRotate: false,
+    formatter: function formatter(text, item) {
+      return String(parseInt(item.point.percent * 100)) + '%';
+    }
+  });
+  chart.guide().html({
+    position: ['50%', '50%'],
+    html: '<div class="g2-guide-html"><p class="title">项目总计</p><p class="value">500</p></div>'
+  });
+  chart.on('interval:mouseenter', function(ev) {
+    var data = ev.data._origin;
+    $(".g2-guide-html").css('opacity', 1);
+    $(".g2-guide-html .title").text(data.type);
+    $(".g2-guide-html .value").text(data.value);
+  });
+
+  chart.on('interval:mouseleave', function() {
+    $(".g2-guide-html .title").text('项目总计');
+    $(".g2-guide-html .value").text(500);
+  });
+  chart.render();
+}
+</script>
+
+</body>
+</html>

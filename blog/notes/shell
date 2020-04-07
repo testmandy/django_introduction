@@ -1,0 +1,58 @@
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+
+
+在 项目名的目录下 的__init__.py 文件中 ,写上如下代码：
+
+1 import pymysql
+2
+3 pymysql.install_as_Mysqldb（）
+创建表格：（写在app 下的models.py 中的代码）：
+
+复制代码
+1 from django.db import models
+2
+3 class Useinfo(models.Model):
+4     username = models.CharField(max_length=32)
+5     password = models.CharField(max_length=64)
+6     age = models.IntegerField()
+复制代码
+写完代码以后 使用命令：
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+使用这两个命令之后才会完成创建表格，以上代码表示 创建的是一个有三个列的表格，
+
+实际上 django自己还创建了一个名字为ID的列， 并且是主键，自增id，默认的。
+
+
+
+添加数据 方法1：（创建时候是在 views.py文件中）
+
+ 1 from django.shortcuts import HttpResponse
+ 2 from app01 import models    #app01 是app名字
+ 3 def orm(request):
+ 4     models.Useinfo.objects.create(username='alex',  # Useinfo 是创建的类的名字
+ 5 password= '123',  6 age=18)
+#方法2
+ 7     dict={'username':'张三','password':'456','age':15}
+ 8     models.Useinfo.objects.create(**dict)
+ 9
+10 return HttpResponse('orm')
+
+
+方法1 和方法2 类似， 使用方法2的时候 字典前面要加 ‘**’， 推荐使用 方法1，一行解决。
+
+方法3
+
+1 from django.shortcuts import HttpResponse
+2 from app01 import models
+3 def orm(request):
+4     obj = models.Useinfo(username='李四',password='huluanbian',age=22)
+5     obj.save()
+
